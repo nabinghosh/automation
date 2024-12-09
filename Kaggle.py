@@ -1,13 +1,8 @@
 import os
-
-# Set the path to kaggle.json before importing KaggleApi
-os.environ['KAGGLE_CONFIG_DIR'] = r"D:\wwwch\Documents\\Kaggle\\automation"
-
+os.environ['KAGGLE_CONFIG_DIR'] = r"[your own kaggle json file location]"
 import subprocess
 import zipfile
 from kaggle.api.kaggle_api_extended import KaggleApi
-
-# Import internal organization modules
 from ntpath import join
 from os import makedirs
 from genericpath import exists
@@ -15,7 +10,7 @@ from genericpath import exists
 # Step 1: Download all data from the competition page
 def download_competition_data(kaggle_url, base_dir):
     # Extract competition name from URL
-    competition_name = extract_competition_name(kaggle_url)
+    competition_name = extract_competition_name(kaggle_url) or 'kaggle-competition'
     
     # Authenticate with Kaggle API
     api = KaggleApi()
@@ -62,7 +57,7 @@ def create_virtual_environment(competition_dir):
 # Step 3: Open VS Code inside the competition folder
 def open_vscode(competition_dir):
     print("Opening VS Code at " + competition_dir)
-    subprocess.run([r"D:\\Program Files\\Microsoft VS Code\\Code.exe", competition_dir], check=True)
+    subprocess.run([r"[your vs code program file location ]", competition_dir], check=True)
 
 # Step 4: Activate the virtual environment
 def activate_virtual_environment(competition_dir):
@@ -84,7 +79,7 @@ def create_jupyter_notebook(competition_dir):
 
 def main():
     kaggle_url = input("Enter the Kaggle competition URL: ")
-    base_dir = r"D:\wwwch\Documents\\Kaggle"
+    base_dir = r"[your directory loaction]"
     
     try:
         # Step 1: Download data
@@ -109,3 +104,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# thanks for visiting ✌️
+# use this code only if you are on windows and using python. if you are a linux/mac user or using R find other resources. Hope this saved your time.
